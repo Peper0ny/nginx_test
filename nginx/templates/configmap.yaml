@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-test-configmap
+data:
+  nginx.conf: |
+    worker_processes  auto;
+    
+    error_log  /var/log/nginx/error.log notice;
+    pid        /var/run/nginx.pid;
+    
+    events {
+          worker_connections  1024;
+    }
+    
+    http {
+          server {
+          listen 80;
+          root    /usr/share/nginx/html;
+          
+          location /message {
+            return 200 "Hello world\n";
+          }
+          location /health {
+             return 200 "200 OK\n";
+          }
+      }
+    }

@@ -1,0 +1,8 @@
+message: "hello world"
+
+replicaCount: 1
+
+image:
+  repository: medoedoed/nginx_test
+  tag: 1
+  
